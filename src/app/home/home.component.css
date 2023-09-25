@@ -1,0 +1,9 @@
+.heading{
+    color: brown;
+    background-color: cornsilk;
+}
+
+.mat-table {
+    table-layout: fixed;
+    width: 200px;  
+}

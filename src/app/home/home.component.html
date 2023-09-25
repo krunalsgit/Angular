@@ -1,0 +1,74 @@
+<p [style.color]="colorName" [style.font-size]="fontSize">This is {{heading | uppercase}}, You call me in app.component.html and cost of it is {{ 0 | currency:'INR'}}</p>
+
+
+<input #inpText (change)="ChangeInput(inpText.value)" type="text" [disabled]="isDisable"><br><br>
+<button (click)="ClickFunction('Press Okay')" class="btn btn-primary">Click Here </button>
+
+<br><br>
+
+<input type="text" [(ngModel)]="heading"> This is ngModel
+
+<div class="m-5 p-3">
+    <h2 [ngClass]="className">This is NgClass</h2>
+    <h2 [ngStyle]="styleName">This is NgStyle</h2>
+    <br>
+    <ul>
+        <li [style.color]="item" *ngFor="let item of colorsList" >{{item}}</li>
+    </ul>
+</div>
+
+<div class="container">
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" fixedLayout>
+        <ng-container matColumnDef="Name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="DateOfBirth">
+          <th mat-header-cell *matHeaderCellDef> Date Of Birth </th>
+<td mat-cell *matCellDef="let element"> {{element.dateOfBirth | date:'fullDate'}}        </ng-container>
+      
+        <ng-container matColumnDef="Gender">
+          <th mat-header-cell *matHeaderCellDef> Gender </th>
+          <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef> Email </th>
+          <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Contact">
+          <th mat-header-cell *matHeaderCellDef> Contact </th>
+          <td mat-cell *matCellDef="let element"> {{element.contact}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Address">
+          <th mat-header-cell *matHeaderCellDef> Address </th>
+          <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Department">
+          <th mat-header-cell *matHeaderCellDef> Department </th>
+          <td mat-cell *matCellDef="let element">{{element.department}} </td>
+        </ng-container>
+      
+        <ng-container matColumnDef="Action">
+          <th mat-header-cell *matHeaderCellDef> Action </th>
+          <td mat-cell *matCellDef="let element"> 
+            <button type="submit" class="m-1" mat-raised-button color="primary" >Edit</button>
+            <button type="submit" class="m-1" mat-raised-button color="warn" >Delete</button>
+          </td>
+        </ng-container>
+      
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+      <mat-paginator [length]="pageLength"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="[5, 10, 20]"
+              [pageIndex]="currentPage"
+              (page)="onPageChange($event)"
+              aria-label="Select page">
+</mat-paginator>
+    </div>
